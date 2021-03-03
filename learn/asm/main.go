@@ -18,6 +18,5 @@ func main() {
 	aa()
 	var bb map[string]int
 	_ = bb
-	ima
 	_ = for1()
 }
