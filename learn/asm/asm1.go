@@ -1,12 +1,13 @@
 package main
 
 
-func for1(){
+func for1() int{
+	a := 0
 	for i := 0; i<5; i=i+1{
-		_ = i
+		a = a + i
 	}
 }
 
 func main(){
-	for1()
+	_ = for1()
 }
