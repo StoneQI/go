@@ -9,6 +9,7 @@ func main() {
 
 	var w io.Reader
 
+	var a *strings.Reader
 	w = strings.NewReader("1234")
 
 	_ = w
