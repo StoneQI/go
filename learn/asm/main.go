@@ -21,9 +21,11 @@ func main() {
 		}
 	}
 
+	_ = aa
 	var w io.Writer
 
-	w = bytes.Buffer
+	w = bytes.Buffer()
+	_ = w
 	var bb map[string]int
 	_ = bb
 	_ = for1()
