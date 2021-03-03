@@ -24,7 +24,7 @@ func main() {
 	_ = aa
 	var w io.Reader
 
-	w = strings.Reader("1234")
+	w = strings.NewReader("1234")
 	_ = w
 	var bb map[string]int
 	_ = bb
