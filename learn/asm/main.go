@@ -1,5 +1,7 @@
 package main
 
+import "io"
+
 func for1() int {
 	a := 0
 	for i := 0; i < 5; i = i + 1 {
@@ -16,7 +18,7 @@ func main() {
 		}
 	}
 
-	var w Write
+	var w io.Writer
 
 	var bb map[string]int
 	_ = bb
