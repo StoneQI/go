@@ -4,8 +4,8 @@ import "fmt"
 
 func main() {
 
-	var w []int
-	w1 := make([]int, 0)
+	var w map[int]string   // nil map
+	w1 := map[int]string{} // empty map
 
 	if w == nil {
 		fmt.Println("w is nil")
