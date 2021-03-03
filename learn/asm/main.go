@@ -1,10 +1,5 @@
 package main
 
-import (
-	"io"
-	"strings"
-)
-
 func for1() int {
 	a := 0
 	for i := 0; i < 5; i = i + 1 {
@@ -22,11 +17,7 @@ func main() {
 	}
 
 	_ = aa
-	var w io.Reader
-
-	w = strings.NewReader("1234")
+	var w *int
 	_ = w
-	var bb map[string]int
-	_ = bb
 	_ = for1()
 }
