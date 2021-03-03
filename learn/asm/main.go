@@ -1,6 +1,9 @@
 package main
 
-import "io"
+import (
+	"io"
+	"strings"
+)
 
 func for1() int {
 	a := 0
@@ -20,6 +23,7 @@ func main() {
 
 	var w io.Writer
 
+	w = 
 	var bb map[string]int
 	_ = bb
 	_ = for1()
