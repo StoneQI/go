@@ -1,14 +1,16 @@
 package main
 
 import (
-	"bufio"
 	"io"
+	"strings"
 )
 
 func main() {
 
 	var w io.Reader
 
-	w = bufio.NewReader("123")
+	w = strings.NewReader("1234")
+
+	_ = w
 
 }
