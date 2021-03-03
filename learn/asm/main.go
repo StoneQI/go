@@ -17,7 +17,9 @@ func main() {
 	}
 
 	var s Write
-	aa()
+
+	s =
+		aa()
 	var bb map[string]int
 	_ = bb
 	_ = for1()
