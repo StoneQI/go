@@ -1,23 +1,13 @@
 package main
 
-func for1() int {
-	a := 0
-	for i := 0; i < 5; i = i + 1 {
-		a = a + i
-	}
-	return a
-}
+import "fmt"
 
 func main() {
-	var aa = func() {
-		a := 0
-		for i := 0; i < 5; i = i + 1 {
-			a = a + i
-		}
+
+	var w *int
+
+	if w == nil {
+		fmt.Println("w is nil")
 	}
 
-	_ = aa
-	var w *int
-	_ = w
-	_ = for1()
 }
