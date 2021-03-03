@@ -1,8 +1,8 @@
 package main
 
 import (
+	"bytes"
 	"io"
-	"strings"
 )
 
 func for1() int {
@@ -23,7 +23,7 @@ func main() {
 
 	var w io.Writer
 
-	w = 
+	w = bytes.Buffer
 	var bb map[string]int
 	_ = bb
 	_ = for1()
