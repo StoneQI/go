@@ -15,6 +15,8 @@ func main() {
 			a = a + i
 		}
 	}
+
+	var s Write
 	aa()
 	var bb map[string]int
 	_ = bb
