@@ -3,28 +3,23 @@ package main
 import "fmt"
 
 type ints []int
+
+type Summer interface {
+	Sum() int
+}
+
 func (i *ints) Sum() int {
 	s := 0
-	for _, v := range {
-	  s += v
+	for _, v := range *i {
+		s += v
 	}
 	return s
 }
 
 func main() {
 
-	type Summer interface {
-		Sum() int
-	}
-
-	
-
-	
-
-
-
 	var i ints
-	var s Sumer = i // nil value can satisfy interface
-	fmt.Println(s==nil, s.Sum()) // true, 0
+	var s Summer = i               // nil value can satisfy interface
+	fmt.Println(s == nil, s.Sum()) // true, 0
 
 }
