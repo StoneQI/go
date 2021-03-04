@@ -8,9 +8,9 @@ type Summer interface {
 	Sum() int
 }
 
-func (i *ints) Sum() int {
+func (i ints) Sum() int {
 	s := 0
-	for _, v := range *i {
+	for _, v := range i {
 		s += v
 	}
 	return s
