@@ -5,22 +5,31 @@ import (
 	"strings"
 )
 
+
+
 func main() {
 
-	var w io.Reader
-
-	var a *strings.Reader
-
-	w = a
-
-	w = strings.NewReader("1234")
-
-	_ = w
+	type Summer intface {
+		Sum() int
+	}
+	  
+	var t *tree // nil of type *tree
+	var s Summer = t // nil指针，可以是合法的interface类型的值
+	  // 此时，对接接口类型变量s而言，其类型为*tree，值为nil，也就是说(*tree, nil)行的interface
+	  
+	fmt.Println(t==nil, s.Sum()) // true, 0
+	  
+	type ints []int
+	func (i *ints) Sum() int {
+		s := 0
+		for _, v := range i{
+		  s += v
+		}
+		return s
+	  }
+	  
+	var i ints
+	var s Sumer = i // nil value can satisfy interface
+	fmt.Println(s==nil, s.Sum()) // true, 0
 
 }
-
-0x0025 00037 (:12)      MOVQ    $0, "".a+24(SP)
-0x002e 00046 (:14)      MOVQ    $0, ""..autotmp_2+32(SP)
-0x0037 00055 (:14)      LEAQ    go.itab.*strings.Reader,io.Reader(SB), AX
-0x003e 00062 (:14)      MOVQ    AX, "".w+40(SP)
-0x0043 00067 (:14)      MOVQ    $0, "".w+48(SP)
