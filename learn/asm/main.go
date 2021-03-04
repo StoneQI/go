@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-02-03 19:50:48
- * @LastEditTime: 2021-02-08 11:58:48
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /learn/BRPC_learn/MPSC.go
- */
 package main
 
 import (
