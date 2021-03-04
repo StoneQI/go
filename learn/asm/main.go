@@ -18,9 +18,10 @@ func (i ints) Sum() int {
 
 func main() {
 
-	var b = make(map[string]string)
+	var b = make(map[string]int)
 	fmt.Println(b["ccc"])
 	fmt.Println(b["ddd"])
+
 	var i ints
 	var s Summer = i
 	var c Summer
