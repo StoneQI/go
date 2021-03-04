@@ -9,7 +9,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"runtime"
 	"sync"
@@ -71,11 +70,6 @@ func (ex *ExecutionQueue) AddTaskNode(data interface{}) {
 	}
 	go ex.exectueTasks(node)
 
-}
-
-func (this *ExecutionQueue) toString() string {
-	rs, _ := json.Marshal(this)
-	return string(rs)
 }
 
 func (ex *ExecutionQueue) moreTasks(oldNode *TaskNode) bool {
@@ -165,7 +159,6 @@ func Test1() {
 					ex.AddTaskNode(i*100 + j)
 				}
 			}(i, &singalexit)
-			s = ex.toString()
 			_ = s
 
 		}
@@ -214,9 +207,9 @@ func main() {
 		count = 0
 		Test1()
 	}
-	// for i := 0; i < 10; i++ {
-	// 	Test2()
-	// }
+	for i := 0; i < 10; i++ {
+		Test2()
+	}
 
 	// Test2()
 }
