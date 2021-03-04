@@ -168,8 +168,8 @@ func Test2() {
 }
 
 func main() {
-	var aa [4]int{1,2,3,4,}
-	_ = aa 
+	arr1 := [3]int{1, 2, 3}
+	_ = arr1
 	for i := 0; i < 10; i++ {
 		count = 0
 		Test1()
