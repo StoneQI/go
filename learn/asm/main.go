@@ -37,23 +37,17 @@ func NewExecutionQueue(_func func(interface{})) *ExecutionQueue {
 
 type ExecutionQueue struct {
 	Head          *TaskNode         `json:"Head"`
-	_execute_func func(interface{}) `json:"-"`
+	_execute_func func(interface{}) `json:"-"` // 消费者函数
 	locker        sync.Mutex        `json:"-"`
 	pool          *sync.Pool        `json:"-"`
-	// jsonVis       string            `json:-`
 }
 
 func (ex *ExecutionQueue) AddTaskNode(data interface{}) {
 	node := ex.pool.Get().(*TaskNode)
-	// node := new(TaskNode)
 	node.Data = data
 	node.Next = UNCONNECTED
 
 	preHead := atomic.SwapPointer((*unsafe.Pointer)(unsafe.Pointer(&ex.Head)), unsafe.Pointer(node))
-	// ex.locker.Lock()
-	// preHead := ex.Head
-	// ex.Head = node
-	// ex.locker.Unlock()
 
 	if preHead != nil {
 		node.Next = (*TaskNode)(preHead)
@@ -64,8 +58,6 @@ func (ex *ExecutionQueue) AddTaskNode(data interface{}) {
 	// 任务不多直接执行，防止线程切换
 	ex._execute_func(node.Data)
 	if !ex.moreTasks(node) {
-		// ex.pool.Put(node)
-		// atomic.StorePointer((*unsafe.Pointer)(unsafe.Pointer(&ex.Head)), nil)
 		return
 	}
 	go ex.exectueTasks(node)
@@ -80,21 +72,7 @@ func (ex *ExecutionQueue) moreTasks(oldNode *TaskNode) bool {
 		return false
 	}
 	newHead = (*TaskNode)(atomic.LoadPointer((*unsafe.Pointer)(unsafe.Pointer(&ex.Head))))
-
-	// ex.locker.Lock()
-	// if ex.Head == newHead {
-	// 	ex.Head = nil
-	// 	ex.locker.Unlock()
-	// 	return false
-	// } else {
-	// 	// 有新插入值
-	// 	newHead = ex.Head
-	// }
-	// ex.locker.Unlock()
-
-	// newTail 为结尾
 	var tail *TaskNode
-
 	p := newHead
 	for {
 		for {
@@ -111,15 +89,12 @@ func (ex *ExecutionQueue) moreTasks(oldNode *TaskNode) bool {
 
 		if p == oldNode {
 			oldNode.Next = tail
-			// ex.jsonVis = ex.toString()
 			return true
 		}
 	}
 }
 
 func (ex *ExecutionQueue) exectueTasks(taskNode *TaskNode) {
-	// defer singalexit.Done()
-	// singalexit.Add(1)
 	for {
 		tmp := taskNode
 
@@ -129,8 +104,6 @@ func (ex *ExecutionQueue) exectueTasks(taskNode *TaskNode) {
 		ex._execute_func(taskNode.Data)
 
 		if taskNode.Next == nil && !ex.moreTasks(taskNode) {
-			// ex.pool.Put(taskNode)
-			// atomic.StorePointer((*unsafe.Pointer)(unsafe.Pointer(&ex.Head)), nil)
 			return
 		}
 	}
