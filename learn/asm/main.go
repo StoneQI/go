@@ -18,8 +18,13 @@ func (i ints) Sum() int {
 
 func main() {
 
+	var b = make(map[string]string)
+	fmt.Println(b["ccc"])
+	fmt.Println(b["ddd"])
 	var i ints
 	var s Summer = i
+	var c Summer
+	fmt.Println(c)
 	fmt.Println(s)                 // nil value can satisfy interface
 	fmt.Println(s == nil, s.Sum()) // true, 0
 
