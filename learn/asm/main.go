@@ -18,8 +18,9 @@ func (i ints) Sum() int {
 
 func main() {
 
-	var i ints
-	var s Summer = i               // nil value can satisfy interface
+	var i *ints
+	var s Summer = i
+	fmt.Println(s)                 // nil value can satisfy interface
 	fmt.Println(s == nil, s.Sum()) // true, 0
 
 }
